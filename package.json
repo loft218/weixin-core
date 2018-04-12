@@ -1,0 +1,26 @@
+{
+  "name": "weixin.core",
+  "version": "1.0.0",
+  "description": "weixin core",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development node ./bin/www",
+    "prod": "cross-env NODE_ENV=production node ./bin/www"
+  },
+  "author": "loft218",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^1.29.0",
+    "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-morgan": "^1.0.1",
+    "koa-route": "^3.2.0",
+    "log4js": "^2.4.1",
+    "mongoose": "4.13.5",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3"
+  }
+}

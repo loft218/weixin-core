@@ -1,0 +1,12 @@
+{
+    "mongodb": {
+        "uri": "mongodb://[user]:[pwd]@[host]:[port]/[db]"
+    },
+    "log4js": {
+        "categories": {
+            "default": {
+                "level": "debug"
+            }
+        }
+    }
+}

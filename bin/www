@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+/**
+ * bin/www
+ */
+
+const config = require('config')
+
+//log configure
+const log4js = require('log4js')
+log4js.configure(config.get('log4js'))
+const logger = log4js.getLogger('startup')
+
+//mongodb connect
+const mongoose = require('mongoose')
+mongoose.connect(config.get('mongodb').uri, { useMongoClient: true })
+const db = mongoose.connection
+db.on('error', logger.error.bind(logger, 'connection error:'))
+db.once('open', function () {
+    logger.info('mongodb connected')
+})
+
+//app startup
+const app = require('../app')
+app.listen(config.get("port") || 0, () => {
+    logger.info(`[${process.env.NODE_ENV}] ${config.app_name} listened on ${config.get("port") || 0}`)
+})

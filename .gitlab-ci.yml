@@ -1,0 +1,55 @@
+image: node:latest
+
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_DEPLOY_KEY")
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\\n\\tStrictHostKeyChecking no\\n\\n" > ~/.ssh/config'
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - test
+  - deploy
+
+npm_install:
+  stage: build
+  script:
+    - npm i --registry=https://registry.npm.taobao.org
+
+# deploy_dev:
+#   stage: deploy
+#   script:
+#     - ssh [user]@[host] "mkdir -p ..."
+#     - scp -r ./* [user]@[host]:...
+#     - ssh [user]@[host] [cmd]
+#   only:
+#     - develop
+#   tags:
+#     - node
+
+# deploy_test:
+#   stage: deploy
+#   script:
+#     - ssh [user]@[host] "mkdir -p ..."
+#     - scp -r ./* [user]@[host]:...
+#     - ssh [user]@[host] [cmd]
+#   only:
+#     - /release\/*/
+#   tags:
+#     - node
+
+# deploy_prod:
+#   stage: deploy
+#   script:
+#     - ssh [user]@[host] "mkdir -p ..."
+#     - scp -r ./* [user]@[host]:...
+#     - ssh [user]@[host] [cmd]
+#   only:
+#     - master
+#   tags:
+#     - node

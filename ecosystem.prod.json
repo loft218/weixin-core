@@ -1,0 +1,13 @@
+{
+    "apps": [
+        {
+            "name": "weixin.core",
+            "script": "./bin/www",
+            "exec_mode": "cluster",
+            "instances": 2,
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "app_name": "weixin.core",
+    "port": 6005,
+    "log4js": {
+        "appenders": {
+            "console": {
+                "type": "console"
+            },
+            "dfile": {
+                "type": "dateFile",
+                "filename": "../logs/wxcore",
+                "pattern": ".yyyy-MM-dd.log",
+                "alwaysIncludePattern": true
+            }
+        },
+        "categories": {
+            "default": {
+                "appenders": [
+                    "console",
+                    "dfile"
+                ],
+                "level": "info"
+            }
+        },
+        "pm2": true
+    }
+}

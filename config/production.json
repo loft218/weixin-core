@@ -1,0 +1,5 @@
+{
+    "mongodb": {
+        "uri": "mongodb://[user]:[pwd]@[host]:[port]/[db]"
+    }
+}

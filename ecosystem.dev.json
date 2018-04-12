@@ -1,0 +1,12 @@
+{
+    "apps": [
+        {
+            "name": "weixin.core",
+            "script": "./bin/www",
+            "exec_mode": "fork",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        }
+    ]
+}
